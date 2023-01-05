@@ -1,31 +1,12 @@
-@import "_colors.scss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-html,
-body,
-#app {
-	margin: 0;
-	height: 100%;
-	background: var(--color-2-mildblack);
-	overscroll-behavior: none;
-	-webkit-user-select: none; // Required as of Safari 15.0 (Graphite's minimum version) through the latest release
-	user-select: none;
-}
-
-// The default value of `auto` from the CSS spec is a footgun with flexbox layouts:
-// https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
-* {
-	min-width: 0;
-	min-height: 0;
-}
-
-html,
-body,
-input,
-textarea,
-button {
-	font-family: "Source Sans Pro", Arial, sans-serif;
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 1;
-	color: var(--color-e-nearwhite);
+@layer components {
+	.bg-checkered {
+		background-image: linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%), linear-gradient(45deg, #cccccc 25%, transparent 25%, transparent 75%, #cccccc 75%),
+			linear-gradient(#ffffff, #ffffff);
+		background-size: 16px 16px;
+		background-position: 0 0, 8px 8px;
+	}
 }
