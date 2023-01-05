@@ -1,7 +1,3 @@
-<script lang="ts" context="module">
-export type ApplicationPlatform = "Windows" | "Mac" | "Linux" | "Web"
-</script>
-
 <script lang="ts">
 import LayoutCol from "$lib/layout/LayoutCol.svelte"
 // import Workspace from "$lib/panel/Workspace.svelte"
