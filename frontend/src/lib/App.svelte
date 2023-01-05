@@ -9,7 +9,9 @@ import TitleBar from "$lib/panel/TitleBar.svelte"
 
   <div class="flex-grow">
   <!-- <Workspace /> -->
-  TODO:Workspace
+  <div class="bg-checkered text-black h-full">
+    TODO:Workspace
+  </div>
 
   </div>
   <!-- <StatusBar /> -->
@@ -18,11 +20,6 @@ import TitleBar from "$lib/panel/TitleBar.svelte"
 
 
 <style>
-  :root {
-    /* text styles */
-    @apply bg-mildblack text-nearwhite leading-none;
-    @apply overflow-hidden overscroll-none select-none touch-none;
-  }
   .root {
     height: 100vh;
   }

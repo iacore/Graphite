@@ -10,3 +10,17 @@
 		background-position: 0 0, 8px 8px;
 	}
 }
+
+:root {
+	/* text styles */
+	@apply bg-mildblack text-nearwhite;
+	@apply overflow-hidden overscroll-none select-none touch-none;
+	font-size: 14px;
+}
+
+:root,
+input,
+textarea,
+button {
+	@apply leading-none;
+}

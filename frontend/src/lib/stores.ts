@@ -22,7 +22,7 @@ export const portfolio: Writable<Portfolio> = writable({
 	documents: [],
 }); // todo: patch
 
-export async function initEditor() {
+async function initEditor() {
 	const { editor: _editor, editor_pubsub } = await import("graphite-frontend-glue/editor");
 	editor.set(_editor);
 	pubsub.set(editor_pubsub);

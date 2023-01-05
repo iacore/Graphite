@@ -1,3 +1,16 @@
+const grays = {
+  darkgray: "#333",
+  dimgray: "#444",
+  dullgray: "#555",
+  lowergray: "#666",
+  middlegray: "#777",
+  uppergray: "#888",
+  palegray: "#999",
+  softgray: "#aaa",
+  lightgray: "#bbb",
+  brightgray: "#ccc",
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,svelte,ts}"],
@@ -10,16 +23,21 @@ module.exports = {
       black: "#000",
       nearblack: "#111",
       mildblack: "#222",
-      darkgray: "#333",
-      dimgray: "#444",
-      dullgray: "#555",
-      lowergray: "#666",
-      middlegray: "#777",
-      uppergray: "#888",
-      palegray: "#999",
-      softgray: "#aaa",
-      lightgray: "#bbb",
-      brightgray: "#ccc",
+
+      gray: {
+        ["000"]: grays.darkgray,
+        ["100"]: grays.dimgray,
+        ["200"]: grays.dullgray,
+        ["300"]: grays.lowergray,
+        ["400"]: grays.middlegray,
+        ["500"]: grays.uppergray,
+        ["600"]: grays.palegray,
+        ["700"]: grays.softgray,
+        ["800"]: grays.lightgray,
+        ["900"]: grays.brightgray,
+      },
+      ...grays,
+
       mildwhite: "#ddd",
       nearwhite: "#eee",
       white: "#fff",
