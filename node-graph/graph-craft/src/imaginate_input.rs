@@ -1,9 +1,10 @@
 use dyn_any::{DynAny, StaticType};
-use glam::DVec2;
 use std::fmt::Debug;
 
+use crate::DVec2;
+
 #[derive(Default, Debug, Clone, Copy, PartialEq, DynAny)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize, ts_rs::TS))]
 pub enum ImaginateStatus {
 	#[default]
 	Idle,
@@ -15,7 +16,7 @@ pub enum ImaginateStatus {
 }
 
 #[derive(Debug, Clone, PartialEq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize, ts_rs::TS))]
 pub struct ImaginateBaseImage {
 	pub mime: String,
 	#[cfg_attr(feature = "serde", serde(rename = "imageData"))]
@@ -24,13 +25,13 @@ pub struct ImaginateBaseImage {
 }
 
 #[derive(Debug, Clone, PartialEq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize, ts_rs::TS))]
 pub struct ImaginateMaskImage {
 	pub svg: String,
 	pub size: DVec2,
 }
 
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize, ts_rs::TS))]
 #[derive(Debug, Default, Clone, Copy, Eq, PartialEq)]
 pub enum ImaginateMaskPaintMode {
 	#[default]
@@ -38,7 +39,7 @@ pub enum ImaginateMaskPaintMode {
 	Outpaint,
 }
 
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize, ts_rs::TS))]
 #[derive(Debug, Default, Clone, Copy, Eq, PartialEq, DynAny)]
 pub enum ImaginateMaskStartingFill {
 	#[default]
@@ -71,7 +72,7 @@ impl std::fmt::Display for ImaginateMaskStartingFill {
 }
 
 #[derive(Debug, Default, Copy, Clone, Eq, PartialEq, DynAny)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize, ts_rs::TS))]
 pub enum ImaginateSamplingMethod {
 	#[default]
 	EulerA,
@@ -164,7 +165,7 @@ impl std::fmt::Display for ImaginateSamplingMethod {
 }
 
 #[derive(Debug, Clone, PartialEq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize, ts_rs::TS))]
 pub struct ImaginateGenerationParameters {
 	pub seed: u64,
 	pub samples: u32,

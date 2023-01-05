@@ -16,6 +16,7 @@ use core::fmt;
 use glam::{DAffine2, DMat2, DVec2};
 use serde::{Deserialize, Serialize};
 use std::fmt::Write;
+use ts_rs::TS;
 
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 /// Represents different types of layers.
@@ -54,7 +55,7 @@ impl LayerDataType {
 	}
 }
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, Hash)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, Hash, TS)]
 pub enum LayerDataTypeDiscriminant {
 	Folder,
 	Shape,

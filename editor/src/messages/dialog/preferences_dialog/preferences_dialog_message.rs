@@ -3,7 +3,7 @@ use crate::messages::prelude::*;
 use serde::{Deserialize, Serialize};
 
 #[impl_message(Message, DialogMessage, PreferencesDialog)]
-#[derive(Eq, PartialEq, Clone, Debug, Serialize, Deserialize)]
+#[derive(Eq, PartialEq, Clone, Debug, Serialize, Deserialize, ts_rs::TS)]
 pub enum PreferencesDialogMessage {
 	Confirm,
 }

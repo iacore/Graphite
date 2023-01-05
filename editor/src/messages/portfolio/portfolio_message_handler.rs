@@ -820,7 +820,7 @@ impl PortfolioMessageHandler {
 					let (image_data, size) = Self::encode_img(image, Some(resolution), image::ImageOutputFormat::Png)?;
 					let size = DVec2::new(size.0 as f64, size.1 as f64);
 					let mime = "image/png".to_string();
-					Some(ImaginateBaseImage { image_data, size, mime })
+					Some(ImaginateBaseImage { image_data, size: size.into(), mime })
 				} else {
 					None
 				}
@@ -842,7 +842,7 @@ impl PortfolioMessageHandler {
 						let render_mode = DocumentRenderMode::LayerCutout(&mask_layer_path, document_legacy::color::Color::WHITE);
 						let svg = document.render_document(size, transform.inverse(), &self.persistent_data, render_mode);
 
-						ImaginateMaskImage { svg, size }
+						ImaginateMaskImage { svg, size: size.into() }
 					});
 
 					if mask_is_some && mask_image.is_none() {

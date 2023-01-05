@@ -15,7 +15,7 @@ pub struct EyedropperTool {
 
 #[remain::sorted]
 #[impl_message(Message, ToolMessage, Eyedropper)]
-#[derive(PartialEq, Eq, Clone, Debug, Hash, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Clone, Debug, Hash, Serialize, Deserialize, ts_rs::TS)]
 pub enum EyedropperToolMessage {
 	// Standard messages
 	#[remain::unsorted]

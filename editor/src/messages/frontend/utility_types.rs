@@ -1,7 +1,8 @@
 use document_legacy::LayerId;
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
-#[derive(PartialEq, Eq, Clone, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Clone, Debug, Serialize, Deserialize, TS)]
 pub struct FrontendDocumentDetails {
 	#[serde(rename = "isAutoSaved")]
 	pub is_auto_saved: bool,
@@ -11,7 +12,7 @@ pub struct FrontendDocumentDetails {
 	pub id: u64,
 }
 
-#[derive(PartialEq, Eq, Clone, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Clone, Debug, Serialize, Deserialize, TS)]
 pub struct FrontendImageData {
 	pub path: Vec<LayerId>,
 	pub mime: String,
@@ -19,7 +20,7 @@ pub struct FrontendImageData {
 	pub image_data: std::sync::Arc<Vec<u8>>,
 }
 
-#[derive(Clone, Copy, Debug, Default, Eq, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq, Serialize, Deserialize, TS)]
 pub enum MouseCursorIcon {
 	#[default]
 	Default,
@@ -37,7 +38,7 @@ pub enum MouseCursorIcon {
 	Rotate,
 }
 
-#[derive(Clone, Copy, Debug, Default, Eq, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq, Serialize, Deserialize, ts_rs::TS)]
 pub enum FileType {
 	#[default]
 	Png,
@@ -55,7 +56,7 @@ impl FileType {
 	}
 }
 
-#[derive(Clone, Copy, Debug, Default, Eq, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq, Serialize, Deserialize, ts_rs::TS)]
 pub enum ExportBounds {
 	#[default]
 	AllArtwork,

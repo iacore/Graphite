@@ -7,6 +7,7 @@ use bitflags::bitflags;
 use serde::{Deserialize, Serialize};
 use std::fmt::{self, Display, Formatter};
 use std::ops::{BitAnd, BitAndAssign, BitOr, BitOrAssign, BitXor, BitXorAssign};
+use ts_rs::TS;
 
 // TODO: Increase size of type
 /// Edit this to specify the storage type used.
@@ -33,7 +34,7 @@ pub enum KeyPosition {
 }
 
 bitflags! {
-	#[derive(Default, Serialize, Deserialize)]
+	#[derive(Default, Serialize, Deserialize, ts_rs::TS)]
 	#[repr(transparent)]
 	pub struct ModifierKeys: u8 {
 		const SHIFT           = 0b_0000_0001;
@@ -50,7 +51,7 @@ bitflags! {
 // (although we ignore the shift key, so the user doesn't have to press `Ctrl Shift +` on a US keyboard), even if the keyboard layout
 // is for a different locale where the `+` key is somewhere entirely different, shifted or not. This would then also work for numpad `+`.
 #[impl_message(Message, InputMapperMessage, KeyDown)]
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Deserialize, Serialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, ts_rs::TS)]
 pub enum Key {
 	// Writing system keys
 	Digit0,
@@ -304,7 +305,7 @@ impl From<Key> for LayoutKey {
 	}
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize, TS)]
 struct LayoutKey {
 	key: String,
 	label: String,
@@ -327,7 +328,7 @@ impl Serialize for Key {
 pub const NUMBER_OF_KEYS: usize = Key::NumKeys as usize;
 
 /// Only `Key`s that exist on a physical keyboard should be used.
-#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize, ts_rs::TS)]
 pub struct KeysGroup(pub Vec<Key>);
 
 impl fmt::Display for KeysGroup {
@@ -365,7 +366,7 @@ impl From<KeysGroup> for String {
 	}
 }
 
-#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize, TS)]
 pub struct LayoutKeysGroup(Vec<LayoutKey>);
 
 impl From<KeysGroup> for LayoutKeysGroup {
@@ -374,7 +375,7 @@ impl From<KeysGroup> for LayoutKeysGroup {
 	}
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, TS)]
 pub enum MouseMotion {
 	None,
 	Lmb,

@@ -6,6 +6,7 @@ use crate::messages::portfolio::document::node_graph::{FrontendNode, FrontendNod
 use crate::messages::portfolio::document::utility_types::layer_panel::{JsRawBuffer, LayerPanelEntry, RawBuffer};
 use crate::messages::prelude::*;
 use crate::messages::tool::utility_types::HintData;
+use crate::DVec2;
 
 use document_legacy::color::Color;
 use document_legacy::layers::text_layer::Font;
@@ -14,10 +15,12 @@ use graph_craft::document::NodeId;
 use graph_craft::imaginate_input::*;
 
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
+#[ts(export)]
 #[remain::sorted]
 #[impl_message(Message, Frontend)]
-#[derive(PartialEq, Clone, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Clone, Debug, Serialize, Deserialize, TS)]
 pub enum FrontendMessage {
 	// Display prefix: make the frontend show something, like a dialog
 	DisplayDialog {
@@ -106,7 +109,7 @@ pub enum FrontendMessage {
 		#[serde(rename = "layerPath")]
 		layer_path: Vec<LayerId>,
 		svg: String,
-		size: glam::DVec2,
+		size: DVec2,
 		#[serde(rename = "imaginateNode")]
 		imaginate_node: Option<Vec<NodeId>>,
 	},

@@ -4,7 +4,7 @@ use crate::messages::prelude::*;
 use serde::{Deserialize, Serialize};
 
 #[impl_message(Message, DialogMessage, ExportDialog)]
-#[derive(PartialEq, Clone, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Clone, Debug, Serialize, Deserialize, ts_rs::TS)]
 pub enum ExportDialogMessage {
 	FileName(String),
 	FileType(FileType),

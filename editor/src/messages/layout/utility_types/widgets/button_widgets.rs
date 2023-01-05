@@ -3,8 +3,9 @@ use crate::messages::{input_mapper::utility_types::misc::ActionKeys, portfolio::
 
 use derivative::*;
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
-#[derive(Clone, Default, Derivative, Serialize, Deserialize)]
+#[derive(Clone, Default, Derivative, Serialize, Deserialize, TS)]
 #[derivative(Debug, PartialEq)]
 pub struct IconButton {
 	pub icon: String,
@@ -26,7 +27,7 @@ pub struct IconButton {
 	pub on_update: WidgetCallback<IconButton>,
 }
 
-#[derive(Clone, Serialize, Deserialize, Derivative)]
+#[derive(Clone, Serialize, Deserialize, Derivative, TS)]
 #[derivative(Debug, PartialEq, Default)]
 pub struct PopoverButton {
 	pub icon: Option<String>,
@@ -45,7 +46,7 @@ pub struct PopoverButton {
 	pub tooltip_shortcut: Option<ActionKeys>,
 }
 
-#[derive(Clone, Serialize, Deserialize, Derivative, Default)]
+#[derive(Clone, Serialize, Deserialize, Derivative, Default, TS)]
 #[derivative(Debug, PartialEq)]
 #[serde(rename_all(serialize = "camelCase", deserialize = "camelCase"))]
 pub struct ParameterExposeButton {
@@ -65,7 +66,7 @@ pub struct ParameterExposeButton {
 	pub on_update: WidgetCallback<ParameterExposeButton>,
 }
 
-#[derive(Clone, Serialize, Deserialize, Derivative, Default)]
+#[derive(Clone, Serialize, Deserialize, Derivative, Default, TS)]
 #[derivative(Debug, PartialEq)]
 #[serde(rename_all(serialize = "camelCase", deserialize = "camelCase"))]
 pub struct TextButton {
@@ -91,7 +92,7 @@ pub struct TextButton {
 	pub on_update: WidgetCallback<TextButton>,
 }
 
-#[derive(Clone, Serialize, Deserialize, Derivative, Default)]
+#[derive(Clone, Serialize, Deserialize, Derivative, Default, TS)]
 #[derivative(Debug, PartialEq)]
 #[serde(rename_all(serialize = "camelCase", deserialize = "camelCase"))]
 pub struct BreadcrumbTrailButtons {

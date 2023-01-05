@@ -1,12 +1,12 @@
+use crate::DVec2;
 use bitflags::bitflags;
-use glam::DVec2;
 use serde::{Deserialize, Serialize};
 
 // Origin is top left
 pub type ViewportPosition = DVec2;
 pub type EditorPosition = DVec2;
 
-#[derive(PartialEq, Clone, Debug, Default, Serialize, Deserialize)]
+#[derive(PartialEq, Clone, Debug, Default, Serialize, Deserialize, ts_rs::TS)]
 pub struct ViewportBounds {
 	pub top_left: DVec2,
 	pub bottom_right: DVec2,
@@ -33,7 +33,7 @@ impl ViewportBounds {
 	}
 }
 
-#[derive(Debug, Copy, Clone, Default, Eq, PartialEq, Hash, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, Default, Eq, PartialEq, Hash, Serialize, Deserialize, ts_rs::TS)]
 pub struct ScrollDelta {
 	// TODO: Switch these to `f64` values (not trivial because floats don't provide PartialEq, Eq, and Hash)
 	pub x: i32,
@@ -56,7 +56,7 @@ impl ScrollDelta {
 	}
 }
 
-#[derive(Debug, Copy, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, Default, PartialEq, Serialize, Deserialize, ts_rs::TS)]
 pub struct MouseState {
 	pub position: ViewportPosition,
 	pub mouse_keys: MouseKeys,
@@ -87,7 +87,7 @@ impl MouseState {
 	}
 }
 
-#[derive(Debug, Copy, Clone, Default, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, Default, PartialEq, Serialize, Deserialize, ts_rs::TS)]
 pub struct EditorMouseState {
 	pub editor_position: EditorPosition,
 	pub mouse_keys: MouseKeys,
@@ -127,7 +127,7 @@ impl EditorMouseState {
 }
 
 bitflags! {
-	#[derive(Default, Serialize, Deserialize)]
+	#[derive(Default, Serialize, Deserialize, ts_rs::TS)]
 	#[repr(transparent)]
 	pub struct MouseKeys: u8 {
 		const LEFT   = 0b0000_0001;

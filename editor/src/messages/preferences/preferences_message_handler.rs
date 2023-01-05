@@ -2,7 +2,7 @@ use crate::messages::prelude::*;
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize, ts_rs::TS)]
 pub struct PreferencesMessageHandler {
 	pub imaginate_server_hostname: String,
 	pub imaginate_refresh_frequency: f64,

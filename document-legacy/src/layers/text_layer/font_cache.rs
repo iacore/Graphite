@@ -1,8 +1,9 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+use ts_rs::TS;
 
 /// A font type (storing font family and font style and an optional preview URL)
-#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq, TS)]
 pub struct Font {
 	#[serde(rename = "fontFamily")]
 	pub font_family: String,

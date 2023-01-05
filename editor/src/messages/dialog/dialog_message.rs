@@ -1,10 +1,11 @@
 use crate::messages::prelude::*;
 
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
 #[remain::sorted]
 #[impl_message(Message, Dialog)]
-#[derive(PartialEq, Clone, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Clone, Debug, Serialize, Deserialize, TS)]
 pub enum DialogMessage {
 	// Sub-messages
 	#[remain::unsorted]

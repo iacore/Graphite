@@ -5,10 +5,11 @@ use crate::messages::prelude::*;
 pub use document_legacy::DocumentResponse;
 
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
 #[remain::sorted]
 #[impl_message(Message, InputPreprocessor)]
-#[derive(PartialEq, Clone, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Clone, Debug, Serialize, Deserialize, TS)]
 pub enum InputPreprocessorMessage {
 	BoundsOfViewports { bounds_of_viewports: Vec<ViewportBounds> },
 	DoubleClick { editor_mouse_state: EditorMouseState, modifier_keys: ModifierKeys },

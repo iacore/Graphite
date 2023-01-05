@@ -4,10 +4,11 @@ use crate::messages::prelude::*;
 use document_legacy::color::Color;
 
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
 #[remain::sorted]
 #[impl_message(Message, Tool)]
-#[derive(PartialEq, Clone, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Clone, Debug, Serialize, Deserialize, TS)]
 pub enum ToolMessage {
 	// Sub-messages
 	#[remain::unsorted]

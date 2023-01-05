@@ -11,7 +11,7 @@ use document_legacy::Operation as DocumentOperation;
 use glam::{DAffine2, DVec2};
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ts_rs::TS)]
 pub struct NavigationMessageHandler {
 	pub pan: DVec2,
 	panning: bool,

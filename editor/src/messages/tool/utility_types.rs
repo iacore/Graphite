@@ -15,6 +15,7 @@ use document_legacy::layers::text_layer::FontCache;
 
 use serde::{Deserialize, Serialize};
 use std::fmt::{self, Debug};
+use ts_rs::TS;
 
 pub type ToolActionHandlerData<'a> = (&'a DocumentMessageHandler, u64, &'a DocumentToolData, &'a InputPreprocessorMessageHandler, &'a FontCache);
 
@@ -252,7 +253,7 @@ impl ToolFsmState {
 }
 
 #[repr(usize)]
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, ts_rs::TS)]
 pub enum ToolType {
 	// General tool group
 	Select,
@@ -431,13 +432,13 @@ pub fn tool_type_to_activate_tool_message(tool_type: ToolType) -> ToolMessageDis
 	}
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
 pub struct HintData(pub Vec<HintGroup>);
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
 pub struct HintGroup(pub Vec<HintInfo>);
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
 pub struct HintInfo {
 	/// A `KeysGroup` specifies all the keys pressed simultaneously to perform an action (like "Ctrl C" to copy).
 	/// Usually at most one is given, but less commonly, multiple can be used to describe additional hotkeys not used simultaneously (like the four different arrow keys to nudge a layer).

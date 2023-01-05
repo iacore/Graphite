@@ -1,7 +1,8 @@
 use derivative::*;
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
-#[derive(Clone, Serialize, Deserialize, Derivative, Debug, Default, PartialEq, Eq)]
+#[derive(Clone, Serialize, Deserialize, Derivative, Debug, Default, PartialEq, Eq, TS)]
 pub struct IconLabel {
 	pub icon: String,
 
@@ -10,7 +11,7 @@ pub struct IconLabel {
 	pub tooltip: String,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
 pub struct Separator {
 	pub direction: SeparatorDirection,
 
@@ -18,13 +19,13 @@ pub struct Separator {
 	pub separator_type: SeparatorType,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
 pub enum SeparatorDirection {
 	Horizontal,
 	Vertical,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
 pub enum SeparatorType {
 	Related,
 	Unrelated,
@@ -32,7 +33,7 @@ pub enum SeparatorType {
 	List,
 }
 
-#[derive(Clone, Serialize, Deserialize, Derivative, Debug, PartialEq, Eq, Default)]
+#[derive(Clone, Serialize, Deserialize, Derivative, Debug, PartialEq, Eq, Default, TS)]
 pub struct TextLabel {
 	pub disabled: bool,
 

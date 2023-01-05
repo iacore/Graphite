@@ -16,7 +16,7 @@ pub enum Clipboard {
 
 pub const INTERNAL_CLIPBOARD_COUNT: u8 = Clipboard::_InternalClipboardCount as u8;
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize, ts_rs::TS)]
 pub struct CopyBufferEntry {
 	pub layer: Layer,
 	pub layer_metadata: LayerMetadata,

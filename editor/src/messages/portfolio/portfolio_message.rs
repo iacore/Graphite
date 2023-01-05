@@ -8,10 +8,11 @@ use graph_craft::document::NodeId;
 use graph_craft::imaginate_input::ImaginateStatus;
 
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
 #[remain::sorted]
 #[impl_message(Message, Portfolio)]
-#[derive(PartialEq, Clone, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Clone, Debug, Serialize, Deserialize, TS)]
 pub enum PortfolioMessage {
 	// Sub-messages
 	#[remain::unsorted]

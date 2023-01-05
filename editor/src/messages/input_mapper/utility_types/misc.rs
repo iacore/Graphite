@@ -4,6 +4,7 @@ use crate::messages::input_mapper::utility_types::input_keyboard::{KeyStates, NU
 use crate::messages::prelude::*;
 
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
 #[derive(Debug, Clone)]
 pub struct Mapping {
@@ -77,7 +78,7 @@ pub struct MappingEntry {
 	pub modifiers: KeyStates,
 }
 
-#[derive(Debug, Clone, Eq, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Eq, PartialEq, Serialize, Deserialize, TS)]
 pub enum ActionKeys {
 	Action(MessageDiscriminant),
 	#[serde(rename = "keys")]

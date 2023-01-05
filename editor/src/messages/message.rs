@@ -5,10 +5,11 @@ use graphite_proc_macros::*;
 use serde::{Deserialize, Serialize};
 use std::collections::hash_map::DefaultHasher;
 use std::hash::{Hash, Hasher};
+use ts_rs::TS;
 
 #[remain::sorted]
 #[impl_message]
-#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize, TS)]
 pub enum Message {
 	#[remain::unsorted]
 	NoOp,

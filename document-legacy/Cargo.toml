@@ -28,3 +28,4 @@ glam = { version = "0.22", features = ["serde"] }
 # Font rendering
 rustybuzz = "*"
 ttf-parser = "*" # Version from rustybuzz
+ts-rs = "6.2.1"

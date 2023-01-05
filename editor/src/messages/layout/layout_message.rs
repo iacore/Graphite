@@ -3,10 +3,11 @@ use crate::messages::layout::utility_types::layout_widget::Layout;
 use crate::messages::prelude::*;
 
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
 #[remain::sorted]
 #[impl_message(Message, Layout)]
-#[derive(PartialEq, Clone, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Clone, Debug, Serialize, Deserialize, TS)]
 pub enum LayoutMessage {
 	ResendActiveWidget { layout_target: LayoutTarget, dirty_id: u64 },
 	SendLayout { layout: Layout, layout_target: LayoutTarget },

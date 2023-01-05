@@ -21,7 +21,7 @@ pub struct EllipseTool {
 
 #[remain::sorted]
 #[impl_message(Message, ToolMessage, Ellipse)]
-#[derive(PartialEq, Eq, Clone, Debug, Hash, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Clone, Debug, Hash, Serialize, Deserialize, ts_rs::TS)]
 pub enum EllipseToolMessage {
 	// Standard messages
 	#[remain::unsorted]

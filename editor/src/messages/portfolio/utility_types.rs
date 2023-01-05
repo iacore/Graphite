@@ -17,7 +17,7 @@ impl Default for PersistentData {
 	}
 }
 
-#[derive(PartialEq, Eq, Clone, Copy, Default, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Clone, Copy, Default, Debug, Serialize, Deserialize, ts_rs::TS)]
 pub enum ImaginateServerStatus {
 	#[default]
 	Unknown,
@@ -26,7 +26,7 @@ pub enum ImaginateServerStatus {
 	Connected,
 }
 
-#[derive(PartialEq, Eq, Clone, Copy, Default, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Clone, Copy, Default, Debug, Serialize, Deserialize, ts_rs::TS)]
 pub enum Platform {
 	#[default]
 	Unknown,
@@ -48,7 +48,7 @@ impl Platform {
 	}
 }
 
-#[derive(PartialEq, Eq, Clone, Copy, Default, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Clone, Copy, Default, Debug, Serialize, Deserialize, ts_rs::TS)]
 pub enum KeyboardPlatformLayout {
 	/// Standard keyboard mapping used by Windows and Linux
 	#[default]

@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 
 #[remain::sorted]
 #[impl_message(Message, PortfolioMessage, Document)]
-#[derive(PartialEq, Clone, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Clone, Debug, Serialize, Deserialize, ts_rs::TS)]
 pub enum DocumentMessage {
 	// Sub-messages
 	#[remain::unsorted]

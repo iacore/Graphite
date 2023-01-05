@@ -24,7 +24,7 @@ pub struct ArtboardTool {
 
 #[remain::sorted]
 #[impl_message(Message, ToolMessage, Artboard)]
-#[derive(PartialEq, Clone, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Clone, Debug, Serialize, Deserialize, ts_rs::TS)]
 pub enum ArtboardToolMessage {
 	// Standard messages
 	#[remain::unsorted]

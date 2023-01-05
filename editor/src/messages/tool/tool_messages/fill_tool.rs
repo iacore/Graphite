@@ -21,7 +21,7 @@ pub struct FillTool {
 
 #[remain::sorted]
 #[impl_message(Message, ToolMessage, Fill)]
-#[derive(PartialEq, Eq, Clone, Debug, Hash, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Clone, Debug, Hash, Serialize, Deserialize, ts_rs::TS)]
 pub enum FillToolMessage {
 	// Standard messages
 	#[remain::unsorted]

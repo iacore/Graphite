@@ -5,10 +5,11 @@ use crate::messages::layout::utility_types::layout_widget::{Widget, WidgetCallba
 use crate::messages::prelude::*;
 
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
 use super::input_widgets::InvisibleStandinInput;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Default)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Default, TS)]
 pub struct MenuBarEntryChildren(pub Vec<Vec<MenuBarEntry>>);
 
 impl MenuBarEntryChildren {
@@ -30,7 +31,7 @@ impl MenuBarEntryChildren {
 	}
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(PartialEq, Debug, Clone, Serialize, Deserialize, TS)]
 pub struct MenuBarEntry {
 	pub label: String,
 	pub icon: Option<String>,
@@ -71,7 +72,7 @@ impl Default for MenuBarEntry {
 	}
 }
 
-#[derive(Debug, Default, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Default, Clone, PartialEq, Serialize, Deserialize, ts_rs::TS)]
 pub struct MenuLayout {
 	pub layout: Vec<MenuBarEntry>,
 }

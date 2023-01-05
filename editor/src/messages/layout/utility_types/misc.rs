@@ -1,7 +1,8 @@
 use serde::{Deserialize, Serialize};
+use ts_rs::TS;
 
 #[remain::sorted]
-#[derive(PartialEq, Clone, Debug, Hash, Eq, Copy, Serialize, Deserialize)]
+#[derive(PartialEq, Clone, Debug, Hash, Eq, Copy, Serialize, Deserialize, TS)]
 #[repr(u8)]
 pub enum LayoutTarget {
 	DialogDetails,

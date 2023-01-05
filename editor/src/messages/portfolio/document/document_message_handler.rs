@@ -36,7 +36,7 @@ use graphene_std::vector::subpath::Subpath;
 use glam::{DAffine2, DVec2};
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize, ts_rs::TS)]
 pub struct DocumentMessageHandler {
 	pub document_legacy: DocumentLegacy,
 	pub saved_document_identifier: u64,
@@ -974,7 +974,7 @@ impl DocumentMessageHandler {
 				document_id,
 				layer_path,
 				svg,
-				size,
+				size: size.into(),
 				imaginate_node,
 			}
 			.into(),

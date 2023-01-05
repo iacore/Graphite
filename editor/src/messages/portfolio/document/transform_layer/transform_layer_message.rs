@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 
 #[remain::sorted]
 #[impl_message(Message, DocumentMessage, TransformLayer)]
-#[derive(PartialEq, Eq, Clone, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Clone, Debug, Serialize, Deserialize, ts_rs::TS)]
 pub enum TransformLayerMessage {
 	// Messages
 	ApplyTransformOperation,
