@@ -1,4 +1,7 @@
 <script lang="ts">
+import { assert } from "$lib/utils"
+
+
 /**
  * The svg string, NOT the url to the svg
  * Import with `import xxxxx from '$icon/xxxxx/*.svg'
@@ -7,8 +10,7 @@ export let src: string
 export let alt: string | undefined
 
 const match = /viewBox="(\d+) (\d+) (\d+) (\d+)"/.exec(src)
-if (!match) throw new Error('SVG has no viewBox')
-const [_whole, _x, _y, w, h] = match
+const [_whole, _x, _y, w, h] = assert(match, 'SVG has no viewBox')
 
 const style = `--svg-width:${w}px;--svg-height:${h}px;`
 </script>

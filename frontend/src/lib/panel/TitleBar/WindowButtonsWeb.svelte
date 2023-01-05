@@ -1,7 +1,7 @@
 <script lang="ts">
 import { maximized } from "$lib/stores"
 import { onMount } from "svelte"
-import { toggleFullscreen } from "$lib/platform"
+import { enterFullscreen, exitFullscreen } from "$lib/platform"
 
 import SvgIcon from "$lib/widget/labels/SvgIcon.svelte"
 import svg_fullscreen_exit from "$icon/12px-solid/fullscreen-exit.svg?raw"
@@ -9,17 +9,19 @@ import svg_fullscreen_enter from "$icon/12px-solid/fullscreen-enter.svg?raw"
 
 let keyboardLockSupported = false
 let keyboardLocked = false
+
 onMount(() => {
   const keyboard = (navigator as any).keyboard
   if (keyboard && keyboard.lock) {
     keyboardLockSupported = true
   }
 })
+
 </script>
 
 <button
   class="px-2 hover:bg-lowergray hover:text-white fill-nearwhite hover:fill-white"
-  on:click="{toggleFullscreen}"
+  on:click="{$maximized ? exitFullscreen : enterFullscreen}"
   title="{($maximized ? 'Exit' : 'Enter') + ' Fullscreen (F11)'}"
 >
   {#if keyboardLockSupported && !keyboardLocked}
@@ -28,8 +30,8 @@ onMount(() => {
   {/if}
 
   {#if $maximized}
-    <SvgIcon src="{svg_fullscreen_exit}" alt="Exit Fullscreen" />
+    <SvgIcon src="{svg_fullscreen_exit}" />
   {:else}
-    <SvgIcon src="{svg_fullscreen_enter}" alt="Enter Fullscreen" />
+    <SvgIcon src="{svg_fullscreen_enter}" />
   {/if}
 </button>

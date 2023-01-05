@@ -15,6 +15,7 @@ export type Portfolio = {
 
 export const editor: Writable<JsEditorHandle | undefined> = writable(undefined);
 export const pubsub: Writable<GraphiteEmitter | undefined> = writable(undefined);
+export const rootElement: Writable<HTMLElement | undefined> = writable(undefined);
 
 export const maximized: Writable<boolean> = writable(false); // todo: patch
 export const portfolio: Writable<Portfolio> = writable({
