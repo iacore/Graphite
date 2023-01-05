@@ -1,3 +1,6 @@
+// @ts-nocheck
+const defaultTheme = require("tailwindcss/defaultTheme")
+
 const grays = {
   darkgray: "#333",
   dimgray: "#444",
@@ -16,6 +19,10 @@ module.exports = {
   content: ["./src/**/*.{html,svelte,ts}"],
   theme: {
     extend: {},
+    fontFamily: {
+      ...defaultTheme.fontFamily,
+      sans: ["Source Sans Pro", ...defaultTheme.fontFamily.sans],
+    },
     colors: {
       transparent: "transparent",
       current: "currentColor",

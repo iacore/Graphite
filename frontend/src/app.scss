@@ -13,14 +13,7 @@
 
 :root {
 	/* text styles */
-	@apply bg-mildblack text-nearwhite;
+	@apply bg-mildblack text-nearwhite leading-none;
 	@apply overflow-hidden overscroll-none select-none touch-none;
 	font-size: 14px;
-}
-
-:root,
-input,
-textarea,
-button {
-	@apply leading-none;
 }

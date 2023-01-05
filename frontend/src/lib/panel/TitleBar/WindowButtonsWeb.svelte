@@ -21,7 +21,7 @@ onMount(() => {
 
 <button
   class="px-2 hover:bg-lowergray hover:text-white fill-nearwhite hover:fill-white"
-  on:click="{$maximized ? exitFullscreen : enterFullscreen}"
+  on:click="{$maximized ? exitFullscreen : () => enterFullscreen()}"
   title="{($maximized ? 'Exit' : 'Enter') + ' Fullscreen (F11)'}"
 >
   {#if keyboardLockSupported && !keyboardLocked}
