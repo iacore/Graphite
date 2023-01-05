@@ -2,11 +2,9 @@
 import { PLATFORM } from "$lib/platform"
 import { portfolio } from "$lib/stores"
 
+import MenuBarInput from "$lib/widget/inputs/MenuBarInput.svelte"
 import WindowButtonsWeb from "./TitleBar/WindowButtonsWeb.svelte"
-
-// import MenuBarInput from "@/components/widgets/inputs/MenuBarInput.vue";
 // import WindowButtonsMac from "@/components/window/title-bar/WindowButtonsMac.vue";
-// import WindowButtonsWeb from "@/components/window/title-bar/WindowButtonsWeb.vue";
 // import WindowButtonsWindows from "@/components/window/title-bar/WindowButtonsWindows.vue";
 // import WindowTitle from "@/components/window/title-bar/WindowTitle.vue";
 
@@ -29,8 +27,7 @@ $: {
       TODO:WindowButtonsMac
       <!-- <WindowButtonsMac /> -->
     {:else}
-      TODO:MenuBarInput
-      <!-- <MenuBarInput /> -->
+      <MenuBarInput />
     {/if}
   </div>
   <div class="flex-auto flex justify-center items-center">

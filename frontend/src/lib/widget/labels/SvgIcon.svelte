@@ -1,6 +1,7 @@
+<svelte:options immutable={true}/>
+
 <script lang="ts">
 import { assert } from "$lib/utils"
-
 
 /**
  * The svg string, NOT the url to the svg

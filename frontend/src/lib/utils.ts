@@ -32,9 +32,13 @@ export function debouncer<T>(callFn: (value: T) => unknown, { debounceTime = 60 
 
 class AssertionError extends Error {}
 
-export function assert<T>(value: T, message: string): NonNullable<T> {
+export function assert<T>(value: T, message?: string): NonNullable<T> {
 	if (!value) {
 		throw new AssertionError(message);
 	}
 	return value;
+}
+
+export function arraysEqual<T>(a: T[], b: T[]): boolean {
+	return a.length === b.length && a.every((aValue, i) => aValue === b[i]);
 }
