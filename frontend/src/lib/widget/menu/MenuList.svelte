@@ -36,7 +36,7 @@ function isEntryOpen(entry: MenuBarEntry): boolean {
 
 <FloatingWindowDecoration>
   <div
-    class="menu-list bg-mildblack"
+    class="menu-list"
     class:hidden="{!show}"
     on:pointerenter="{() => {
       forceOpen = true
