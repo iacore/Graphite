@@ -17,11 +17,12 @@ $: open = opened == entry.label
 </script>
 
 <div class="relative h-full flex">
-  {#if open}
+  {#if entry.children.length > 0}
     <div class="popup absolute min-w-[240px]">
       <MenuList open="{open}" entries="{entry.children}" drawIcon="{true}" />
     </div>
   {/if}
+
   <button
     on:focus="{() => {
       opened = entry.label
