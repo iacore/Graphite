@@ -2,7 +2,7 @@
 import { PLATFORM } from "$lib/platform"
 import { portfolio } from "$lib/stores"
 
-import MenuBarInput from "$lib/widget/inputs/MenuBarInput.svelte"
+import AppMenu from "$lib/panel/AppMenu.svelte"
 import WindowButtonsWeb from "./TitleBar/WindowButtonsWeb.svelte"
 // import WindowButtonsMac from "@/components/window/title-bar/WindowButtonsMac.vue";
 // import WindowButtonsWindows from "@/components/window/title-bar/WindowButtonsWindows.vue";
@@ -27,7 +27,7 @@ $: {
       TODO:WindowButtonsMac
       <!-- <WindowButtonsMac /> -->
     {:else}
-      <MenuBarInput />
+      <AppMenu />
     {/if}
   </div>
   <div class="flex-auto flex justify-center items-center">

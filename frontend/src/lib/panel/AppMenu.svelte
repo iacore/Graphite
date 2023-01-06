@@ -1,6 +1,6 @@
 <script lang="ts">
 import MenuList from "$lib/popup/MenuList.svelte"
-import IconLabel from "../labels/IconLabel.svelte"
+import IconLabel from "../widget/labels/IconLabel.svelte"
 
 import type {
   LayoutKeysGroup,

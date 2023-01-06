@@ -1,13 +1,13 @@
 <script lang="ts">
 // import Workspace from "$lib/panel/Workspace.svelte"
-import TitleBar from "$lib/panel/TitleBar.svelte"
+import AppMenuBar from "$lib/panel/AppMenuBar.svelte"
 // import StatusBar from "$lib/panel/StatusBar.svelte"
 
 import { rootElement } from "$lib/stores"
 </script>
 
 <div class="root flex flex-col" bind:this="{$rootElement}">
-  <TitleBar />
+  <AppMenuBar />
 
   <div class="flex-grow">
     <!-- <Workspace /> -->
