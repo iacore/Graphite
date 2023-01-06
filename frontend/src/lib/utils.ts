@@ -1,4 +1,4 @@
-import type { LayoutKeysGroup } from "glue/editor_types";
+import type { LayoutKeysGroup } from "graphite-frontend-glue/editor_types";
 import { PLATFORM } from "./platform";
 
 export type Debouncer = ReturnType<typeof debouncer>;

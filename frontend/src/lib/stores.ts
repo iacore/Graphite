@@ -1,6 +1,6 @@
 import { browser } from "$app/environment";
-import type { LayoutTarget, MenuBarEntry } from "glue/editor_types";
-import type { GraphiteEmitter } from "glue/emitter_type";
+import type { LayoutTarget, MenuBarEntry } from "graphite-frontend-glue/editor_types";
+import type { GraphiteEmitter } from "graphite-frontend-glue/emitter_type";
 import type { JsEditorHandle } from "graphite-frontend-glue/editor";
 import { createEditor, createEmitter } from "graphite-frontend-glue/editor";
 import { get, writable, type Writable } from "svelte/store";

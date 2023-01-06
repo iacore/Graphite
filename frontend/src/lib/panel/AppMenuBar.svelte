@@ -2,7 +2,7 @@
 import { PLATFORM } from "$lib/platform"
 import { portfolio } from "$lib/stores"
 
-import AppMenu from "$lib/panel/AppMenu.svelte"
+import AppMenu from "$lib/widget/menu/AppMenu.svelte"
 import WindowButtonsWeb from "./TitleBar/WindowButtonsWeb.svelte"
 // import WindowButtonsMac from "@/components/window/title-bar/WindowButtonsMac.vue";
 // import WindowButtonsWindows from "@/components/window/title-bar/WindowButtonsWindows.vue";
