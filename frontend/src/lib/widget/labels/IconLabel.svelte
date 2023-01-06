@@ -22,12 +22,13 @@ $: svgString = ICONS[icon]
 </div>
 
 <style lang="scss">
+@import '$lib/_colors.scss';
 .icon-label {
   flex: 0 0 auto;
-  fill: theme("colors.nearwhite");
+  fill: var(--color-e-nearwhite);
 
   &.disabled {
-    fill: theme("colors.uppergray");
+    fill: var(--color-8-uppergray);
   }
 }
 </style>
