@@ -4,6 +4,7 @@
 	export let direction: "Bottom"
 	export let minWidth: number
 	export let drawIcon: boolean
+	export let keydownEvent: undefined | KeyboardEvent
 </script>
 
 TODO:MenuList

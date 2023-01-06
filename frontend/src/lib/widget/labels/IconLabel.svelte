@@ -1,7 +1,33 @@
-<svelte:options immutable={true}/>
+<svelte:options immutable="{true}" />
 
 <script lang="ts">
-	export let icon: string
+import SvgIcon from "./SvgIcon.svelte"
+import ICONS from "$lib/icons"
+
+/** Icon name. Used to be the Vue Component name */
+export let icon: string
+export let disabled: boolean = false
+export let tooltip: string | undefined
+
+let svgString: string | undefined
+$: svgString = ICONS[icon]
 </script>
 
-TODO: IconLabel({icon})
+<div class="icon-label" class:disabled="{disabled}">
+  {#if svgString}
+    <SvgIcon src="{svgString}" alt="{tooltip}" />
+  {:else}
+    NEXIST '{icon}'
+  {/if}
+</div>
+
+<style lang="scss">
+.icon-label {
+  flex: 0 0 auto;
+  fill: theme("colors.nearwhite");
+
+  &.disabled {
+    fill: theme("colors.uppergray");
+  }
+}
+</style>

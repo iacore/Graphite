@@ -22,7 +22,7 @@ export async function createEditor(pubsub: GraphiteEmitter): Promise<JsEditorHan
 	const randomSeed = BigInt(randomSeedFloat);
 	setRandomSeed(randomSeed);
 	let editor = (lastEditor = new JsEditorHandle((messageType: string, messageData: any): void => {
-		pubsub.emit(messageType as any, messageData);
+		pubsub.emit(messageType as any, (messageData ?? {})[messageType]);
 	}));
 	return editor;
 }
