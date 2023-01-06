@@ -1,12 +1,14 @@
 <script lang="ts">
-import MenuList from "$lib/popup/MenuList.svelte"
-import IconLabel from "../widget/labels/IconLabel.svelte"
-
 import type {
+  ActionKeys,
   LayoutKeysGroup,
   LayoutTarget,
   MenuBarEntry,
 } from "graphite-frontend-glue/editor_types"
+import MenuList, { type MenuListEntry } from "$lib/popup/MenuList.svelte"
+import IconLabel from "../widget/labels/IconLabel.svelte"
+import { shortcutRequiresLock } from "$lib/utils"
+
 import { onDestroy, onMount } from "svelte"
 import { editor, menuBarLayout } from "$lib/stores"
 import { PLATFORM } from "$lib/platform"
@@ -25,37 +27,6 @@ $: {
   }
 }
 
-// TODO: Apparently, Safari does not support the Keyboard.lock() API but does relax its authority over certain keyboard shortcuts in fullscreen mode, which we should take advantage of
-const accelKey = PLATFORM === "Mac" ? "Command" : "Control"
-const LOCK_REQUIRING_SHORTCUTS = [
-  [accelKey, "KeyW"],
-  [accelKey, "KeyN"],
-  [accelKey, "Shift", "KeyN"],
-  [accelKey, "KeyT"],
-  [accelKey, "Shift", "KeyT"],
-]
-
-const shortcutRequiresLock = (shortcut: LayoutKeysGroup): boolean => {
-  const shortcutKeys = shortcut.map((keyWithLabel) => keyWithLabel.key)
-
-  // If this shortcut matches any of the browser-reserved shortcuts
-  return LOCK_REQUIRING_SHORTCUTS.some((lockKeyCombo) =>
-    arraysEqual(shortcutKeys, lockKeyCombo)
-  )
-}
-
-type MenuListEntry = MenuBarEntry & {
-  w_action: () => void
-  w_children: MenuListEntry[][]
-  isOpen: boolean
-  lastEvent?: KeyboardEvent
-
-  // seem unused:
-  value: undefined
-  disabled: undefined
-  font: undefined
-}
-
 function menuBarEntryToMenuListEntry(
   layoutTarget: LayoutTarget,
   entry: MenuBarEntry
@@ -66,7 +37,7 @@ function menuBarEntryToMenuListEntry(
     ...entry,
 
     // Shared names with fields that need to be converted from the type used in `MenuBarEntry` to that of `MenuListEntry`
-    w_action: () =>
+    action: () =>
       ed.updateLayout(layoutTarget, BigInt(entry.action.widgetId), undefined),
 
     w_children: entry.children.map((entries) =>
@@ -91,7 +62,7 @@ function clickEntry(menuListEntry: MenuListEntry, e: MouseEvent) {
   // If there's no menu to open, trigger the action but don't try to open its non-existant children
   if (!menuListEntry.children || menuListEntry.children.length === 0) {
     if (menuListEntry.action && !menuListEntry.disabled)
-      menuListEntry.w_action()
+      menuListEntry.action()
   } else {
     // Focus the target so that keyboard inputs are sent to the dropdown
     ;(e.target as HTMLElement | undefined)?.focus()
@@ -116,7 +87,7 @@ function unFocusEntry(menuListEntry: MenuListEntry, e: FocusEvent) {
 </script>
 
 <div class="menu-bar-input" data-menu-bar-input bind:this="{self}">
-  {#each entries as entry (entry.label)}
+  {#each entries as entry}
     <div class="entry-container">
       <button
         on:click="{(e) => clickEntry(entry, e)}"
@@ -135,7 +106,7 @@ function unFocusEntry(menuListEntry: MenuListEntry, e: FocusEvent) {
           {entry.label}
         {/if}
       </button>
-      {#if entry.children && entry.children.length > 0}
+      {#if entry.children.length > 0}
         <MenuList
           open="{entry.isOpen}"
           entries="{entry.children}"

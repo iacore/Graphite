@@ -15,7 +15,6 @@ export let scrollableY: boolean = false
 </div>
 
 <style lang="scss">
-@import "./_layout.scss";
 .layout-row {
   display: flex;
   flex-direction: row;

@@ -7,7 +7,7 @@ import ICONS from "$lib/icons"
 /** Icon name. Used to be the Vue Component name */
 export let icon: string
 export let disabled: boolean = false
-export let tooltip: string | undefined
+export let tooltip: string | undefined = undefined
 
 let svgString: string | undefined
 $: svgString = ICONS[icon]
@@ -22,7 +22,6 @@ $: svgString = ICONS[icon]
 </div>
 
 <style lang="scss">
-@import '$lib/_colors.scss';
 .icon-label {
   flex: 0 0 auto;
   fill: var(--color-e-nearwhite);

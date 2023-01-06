@@ -1,7 +1,6 @@
 <script lang="ts">
-import { maximized } from "$lib/stores"
+import { maximized, enterFullscreen, exitFullscreen } from "$lib/stores"
 import { onMount } from "svelte"
-import { enterFullscreen, exitFullscreen } from "$lib/platform"
 
 import SvgIcon from "$lib/widget/labels/SvgIcon.svelte"
 import svg_fullscreen_exit from "$icon/12px-solid/fullscreen-exit.svg?raw"
@@ -16,7 +15,6 @@ onMount(() => {
     keyboardLockSupported = true
   }
 })
-
 </script>
 
 <button
@@ -30,8 +28,8 @@ onMount(() => {
   {/if}
 
   {#if $maximized}
-    <SvgIcon src="{svg_fullscreen_exit}" />
+    <SvgIcon src="{svg_fullscreen_exit}" alt="{undefined}" />
   {:else}
-    <SvgIcon src="{svg_fullscreen_enter}" />
+    <SvgIcon src="{svg_fullscreen_enter}" alt="{undefined}" />
   {/if}
 </button>

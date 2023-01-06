@@ -1,3 +1,6 @@
+import type { LayoutKeysGroup } from "glue/editor_types";
+import { PLATFORM } from "./platform";
+
 export type Debouncer = ReturnType<typeof debouncer>;
 
 export type DebouncerOptions = {
@@ -41,4 +44,21 @@ export function assert<T>(value: T, message?: string): NonNullable<T> {
 
 export function arraysEqual<T>(a: T[], b: T[]): boolean {
 	return a.length === b.length && a.every((aValue, i) => aValue === b[i]);
+}
+
+// TODO: Apparently, Safari does not support the Keyboard.lock() API but does relax its authority over certain keyboard shortcuts in fullscreen mode, which we should take advantage of
+const accelKey = PLATFORM === "Mac" ? "Command" : "Control";
+const LOCK_REQUIRING_SHORTCUTS = [
+	[accelKey, "KeyW"],
+	[accelKey, "KeyN"],
+	[accelKey, "Shift", "KeyN"],
+	[accelKey, "KeyT"],
+	[accelKey, "Shift", "KeyT"],
+];
+
+export function shortcutRequiresLock(shortcut: LayoutKeysGroup): boolean {
+	const shortcutKeys = shortcut.map((keyWithLabel) => keyWithLabel.key);
+
+	// If this shortcut matches any of the browser-reserved shortcuts
+	return LOCK_REQUIRING_SHORTCUTS.some((lockKeyCombo) => arraysEqual(shortcutKeys, lockKeyCombo));
 }
