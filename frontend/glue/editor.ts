@@ -4,8 +4,8 @@ import type { JsEditorHandle } from "graphite-wasm";
 import { createNanoEvents } from "nanoevents";
 export type { JsEditorHandle } from "graphite-wasm";
 
-import type { GraphiteEmitter } from "./emitter_type";
-export type { GraphiteEmitter } from "./emitter_type";
+import type { GraphiteEmitter, GraphiteEvents } from "./emitter_type";
+export type { GraphiteEmitter, GraphiteEvents } from "./emitter_type";
 
 // todo: remove this
 /**
@@ -22,7 +22,7 @@ export async function createEditor(pubsub: GraphiteEmitter): Promise<JsEditorHan
 	const randomSeed = BigInt(randomSeedFloat);
 	setRandomSeed(randomSeed);
 	let editor = (lastEditor = new JsEditorHandle((messageType: string, messageData: any): void => {
-		pubsub.emit(messageType as any, (messageData ?? {})[messageType]);
+		pubsub.emit(messageType as keyof GraphiteEvents, (messageData ?? {})[messageType]);
 	}));
 	return editor;
 }

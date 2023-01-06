@@ -82,7 +82,7 @@ export type FrontendDocumentDetails =
 isAutoSaved: boolean,
 isSaved: boolean,
 name: string,
-id: number
+id: bigint
 };
 
 export type FrontendGraphDataType =
@@ -97,7 +97,7 @@ export type FrontendGraphDataType =
 
 export type FrontendImageData =
 {
-path: Array<number>,
+path: Array<bigint>,
 mime: string
 };
 
@@ -141,19 +141,19 @@ maskBlurPx: number,
 maskFillContent: ImaginateMaskStartingFill,
 hostname: string,
 refreshFrequency: number,
-documentId: number,
-layerPath: Array<number>,
-nodePath: Array<number>
+documentId: bigint,
+layerPath: Array<bigint>,
+nodePath: Array<bigint>
 } } |
 { TriggerImaginateTerminate: {
-documentId: number,
-layerPath: Array<number>,
-nodePath: Array<number>,
+documentId: bigint,
+layerPath: Array<bigint>,
+nodePath: Array<bigint>,
 hostname: string
 } } |
 "TriggerImport" |
 { TriggerIndexedDbRemoveDocument: {
-documentId: number
+documentId: bigint
 } } |
 { TriggerIndexedDbWriteDocument: {
 document: string,
@@ -163,11 +163,11 @@ version: string
 "TriggerLoadAutoSaveDocuments" |
 "TriggerLoadPreferences" |
 { TriggerNodeGraphFrameGenerate: {
-documentId: number,
-layerPath: Array<number>,
+documentId: bigint,
+layerPath: Array<bigint>,
 svg: string,
 size: DVec2,
-imaginateNode: (undefined | Array<number>)
+imaginateNode: (undefined | Array<bigint>)
 } } |
 "TriggerOpenDocument" |
 "TriggerPaste" |
@@ -193,7 +193,7 @@ copyText: string
 url: string
 } } |
 { UpdateActiveDocument: {
-documentId: number
+documentId: bigint
 } } |
 { UpdateDialogDetails: {
 layoutTarget: LayoutTarget,
@@ -242,7 +242,7 @@ secondaryColor: string,
 setColorChoice: (undefined | string)
 } } |
 { UpdateImageData: {
-documentId: number,
+documentId: bigint,
 imageData: Array<FrontendImageData>
 } } |
 { UpdateInputHints: {
@@ -268,7 +268,7 @@ layoutTarget: LayoutTarget,
 diff: Array<WidgetDiff>
 } } |
 { UpdateNodeGraphSelection: {
-selected: Array<number>
+selected: Array<bigint>
 } } |
 { UpdateNodeGraphVisibility: {
 visible: boolean
@@ -302,7 +302,7 @@ diff: Array<WidgetDiff>
 
 export type FrontendNode =
 {
-id: number,
+id: bigint,
 displayName: string,
 primaryInput: (undefined | FrontendGraphDataType),
 exposedInputs: Array<NodeGraphInput>,
@@ -314,9 +314,9 @@ output: boolean
 
 export type FrontendNodeLink =
 {
-linkStart: number,
-linkEnd: number,
-linkEndInputIndex: number
+linkStart: bigint,
+linkEnd: bigint,
+linkEndInputIndex: bigint
 };
 
 export type FrontendNodeType =
@@ -365,7 +365,7 @@ size: DVec2
 
 export type ImaginateGenerationParameters =
 {
-seed: number,
+seed: bigint,
 samples: number,
 samplingMethod: string,
 denoisingStrength: (undefined | number),
@@ -414,13 +414,13 @@ tooltip: string,
 visible: boolean,
 layerType: LayerDataTypeDiscriminant,
 layerMetadata: LayerMetadata,
-path: Array<number>,
+path: Array<bigint>,
 thumbnail: string
 };
 
 export type LayerReferenceInput =
 {
-value: (undefined | Array<number>),
+value: (undefined | Array<bigint>),
 layerName: (undefined | string),
 layerType: (undefined | LayerDataTypeDiscriminant),
 disabled: boolean,
@@ -690,13 +690,13 @@ export type Widget =
 
 export type WidgetDiff =
 {
-widgetPath: Array<number>,
+widgetPath: Array<bigint>,
 newValue: DiffUpdate
 };
 
 export type WidgetHolder =
 {
-widgetId: number,
+widgetId: bigint,
 widget: Widget
 };
 
@@ -730,26 +730,26 @@ maskBlurPx: number,
 maskFillContent: ImaginateMaskStartingFill,
 hostname: string,
 refreshFrequency: number,
-documentId: number,
-layerPath: Array<number>,
-nodePath: Array<number>
+documentId: bigint,
+layerPath: Array<bigint>,
+nodePath: Array<bigint>
 }, TriggerImaginateTerminate: {
-documentId: number,
-layerPath: Array<number>,
-nodePath: Array<number>,
+documentId: bigint,
+layerPath: Array<bigint>,
+nodePath: Array<bigint>,
 hostname: string
 }, TriggerImport: void, TriggerIndexedDbRemoveDocument: {
-documentId: number
+documentId: bigint
 }, TriggerIndexedDbWriteDocument: {
 document: string,
 details: FrontendDocumentDetails,
 version: string
 }, TriggerLoadAutoSaveDocuments: void, TriggerLoadPreferences: void, TriggerNodeGraphFrameGenerate: {
-documentId: number,
-layerPath: Array<number>,
+documentId: bigint,
+layerPath: Array<bigint>,
 svg: string,
 size: DVec2,
-imaginateNode: (undefined | Array<number>)
+imaginateNode: (undefined | Array<bigint>)
 }, TriggerOpenDocument: void, TriggerPaste: void, TriggerRasterDownload: {
 svg: string,
 name: string,
@@ -764,7 +764,7 @@ copyText: string
 }, TriggerViewportResize: void, TriggerVisitLink: {
 url: string
 }, UpdateActiveDocument: {
-documentId: number
+documentId: bigint
 }, UpdateDialogDetails: {
 layoutTarget: LayoutTarget,
 diff: Array<WidgetDiff>
@@ -800,7 +800,7 @@ primaryColor: string,
 secondaryColor: string,
 setColorChoice: (undefined | string)
 }, UpdateImageData: {
-documentId: number,
+documentId: bigint,
 imageData: Array<FrontendImageData>
 }, UpdateInputHints: {
 hintData: HintData
@@ -819,7 +819,7 @@ links: Array<FrontendNodeLink>
 layoutTarget: LayoutTarget,
 diff: Array<WidgetDiff>
 }, UpdateNodeGraphSelection: {
-selected: Array<number>
+selected: Array<bigint>
 }, UpdateNodeGraphVisibility: {
 visible: boolean
 }, UpdateNodeTypes: {
