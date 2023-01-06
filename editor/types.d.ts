@@ -86,14 +86,14 @@ id: number
 };
 
 export type FrontendGraphDataType =
-{ general: null } |
-{ raster: null } |
-{ color: null } |
-{ number: null } |
-{ vector: null } |
-{ number: null } |
-{ number: null } |
-{ vec2: null };
+"general" |
+"raster" |
+"color" |
+"number" |
+"vector" |
+"number" |
+"number" |
+"vec2";
 
 export type FrontendImageData =
 {
@@ -105,7 +105,7 @@ export type FrontendMessage =
 { DisplayDialog: {
 icon: string
 } } |
-{ DisplayDialogDismiss: null } |
+"DisplayDialogDismiss" |
 { DisplayDialogPanic: {
 panicInfo: string,
 header: string,
@@ -117,7 +117,7 @@ lineWidth: (undefined | number),
 fontSize: number,
 color: Color
 } } |
-{ DisplayRemoveEditableTextbox: null } |
+"DisplayRemoveEditableTextbox" |
 { TriggerAboutGraphiteLocalizedCommitDate: {
 commitDate: string
 } } |
@@ -151,7 +151,7 @@ layerPath: Array<number>,
 nodePath: Array<number>,
 hostname: string
 } } |
-{ TriggerImport: null } |
+"TriggerImport" |
 { TriggerIndexedDbRemoveDocument: {
 documentId: number
 } } |
@@ -160,8 +160,8 @@ document: string,
 details: FrontendDocumentDetails,
 version: string
 } } |
-{ TriggerLoadAutoSaveDocuments: null } |
-{ TriggerLoadPreferences: null } |
+"TriggerLoadAutoSaveDocuments" |
+"TriggerLoadPreferences" |
 { TriggerNodeGraphFrameGenerate: {
 documentId: number,
 layerPath: Array<number>,
@@ -169,26 +169,26 @@ svg: string,
 size: DVec2,
 imaginateNode: (undefined | Array<number>)
 } } |
-{ TriggerOpenDocument: null } |
-{ TriggerPaste: null } |
+"TriggerOpenDocument" |
+"TriggerPaste" |
 { TriggerRasterDownload: {
 svg: string,
 name: string,
 mime: string,
 size: (Array<number> & { length: 2 })
 } } |
-{ TriggerRefreshBoundsOfViewports: null } |
+"TriggerRefreshBoundsOfViewports" |
 { TriggerRevokeBlobUrl: {
 url: string
 } } |
 { TriggerSavePreferences: {
 preferences: PreferencesMessageHandler
 } } |
-{ TriggerTextCommit: null } |
+"TriggerTextCommit" |
 { TriggerTextCopy: {
 copyText: string
 } } |
-{ TriggerViewportResize: null } |
+"TriggerViewportResize" |
 { TriggerVisitLink: {
 url: string
 } } |
@@ -384,14 +384,14 @@ size: DVec2
 };
 
 export type ImaginateMaskPaintMode =
-{ Inpaint: null } |
-{ Outpaint: null };
+"Inpaint" |
+"Outpaint";
 
 export type ImaginateMaskStartingFill =
-{ Fill: null } |
-{ Original: null } |
-{ LatentNoise: null } |
-{ LatentNothing: null };
+"Fill" |
+"Original" |
+"LatentNoise" |
+"LatentNothing";
 
 export type InvisibleStandinInput =
 {
@@ -450,18 +450,18 @@ export type LayoutKeysGroup =
 Array<LayoutKey>;
 
 export type LayoutTarget =
-{ DialogDetails: null } |
-{ DocumentBar: null } |
-{ DocumentMode: null } |
-{ LayerTreeOptions: null } |
-{ MenuBar: null } |
-{ NodeGraphBar: null } |
-{ PropertiesOptions: null } |
-{ PropertiesSections: null } |
-{ ToolOptions: null } |
-{ ToolShelf: null } |
-{ WorkingColors: null } |
-{ LayoutTargetLength: null };
+"DialogDetails" |
+"DocumentBar" |
+"DocumentMode" |
+"LayerTreeOptions" |
+"MenuBar" |
+"NodeGraphBar" |
+"PropertiesOptions" |
+"PropertiesSections" |
+"ToolOptions" |
+"ToolShelf" |
+"WorkingColors" |
+"LayoutTargetLength";
 
 export type MenuBarEntry =
 {
@@ -476,31 +476,31 @@ export type MenuBarEntryChildren =
 Array<Array<MenuBarEntry>>;
 
 export type MouseCursorIcon =
-{ Default: null } |
-{ None: null } |
-{ ZoomIn: null } |
-{ ZoomOut: null } |
-{ Grabbing: null } |
-{ Crosshair: null } |
-{ Text: null } |
-{ Move: null } |
-{ NSResize: null } |
-{ EWResize: null } |
-{ NESWResize: null } |
-{ NWSEResize: null } |
-{ Rotate: null };
+"Default" |
+"None" |
+"ZoomIn" |
+"ZoomOut" |
+"Grabbing" |
+"Crosshair" |
+"Text" |
+"Move" |
+"NSResize" |
+"EWResize" |
+"NESWResize" |
+"NWSEResize" |
+"Rotate";
 
 export type MouseMotion =
-{ None: null } |
-{ Lmb: null } |
-{ Rmb: null } |
-{ Mmb: null } |
-{ ScrollUp: null } |
-{ ScrollDown: null } |
-{ Drag: null } |
-{ LmbDrag: null } |
-{ RmbDrag: null } |
-{ MmbDrag: null };
+"None" |
+"Lmb" |
+"Rmb" |
+"Mmb" |
+"ScrollUp" |
+"ScrollDown" |
+"Drag" |
+"LmbDrag" |
+"RmbDrag" |
+"MmbDrag";
 
 export type NodeGraphInput =
 {
@@ -529,13 +529,13 @@ minWidth: number
 };
 
 export type NumberInputIncrementBehavior =
-{ Add: null } |
-{ Multiply: null } |
-{ Callback: null };
+"Add" |
+"Multiply" |
+"Callback";
 
 export type NumberInputMode =
-{ Increment: null } |
-{ Range: null };
+"Increment" |
+"Range";
 
 export type OptionalInput =
 {
@@ -559,16 +559,16 @@ disabled: boolean
 };
 
 export type PivotPosition =
-{ None: null } |
-{ TopLeft: null } |
-{ TopCenter: null } |
-{ TopRight: null } |
-{ CenterLeft: null } |
-{ Center: null } |
-{ CenterRight: null } |
-{ BottomLeft: null } |
-{ BottomCenter: null } |
-{ BottomRight: null };
+"None" |
+"TopLeft" |
+"TopCenter" |
+"TopRight" |
+"CenterLeft" |
+"Center" |
+"CenterRight" |
+"BottomLeft" |
+"BottomCenter" |
+"BottomRight";
 
 export type PopoverButton =
 {
@@ -610,14 +610,14 @@ type: SeparatorType
 };
 
 export type SeparatorDirection =
-{ Horizontal: null } |
-{ Vertical: null };
+"Horizontal" |
+"Vertical";
 
 export type SeparatorType =
-{ Related: null } |
-{ Unrelated: null } |
-{ Section: null } |
-{ List: null };
+"Related" |
+"Unrelated" |
+"Section" |
+"List";
 
 export type SwatchPairInput =
 {
@@ -702,7 +702,7 @@ widget: Widget
 
 export type FrontendMessage_keyed = { DisplayDialog: {
 icon: string
-}, DisplayDialogDismiss: null, DisplayDialogPanic: {
+}, DisplayDialogDismiss: void, DisplayDialogPanic: {
 panicInfo: string,
 header: string,
 description: string
@@ -711,7 +711,7 @@ text: string,
 lineWidth: (undefined | number),
 fontSize: number,
 color: Color
-}, DisplayRemoveEditableTextbox: null, TriggerAboutGraphiteLocalizedCommitDate: {
+}, DisplayRemoveEditableTextbox: void, TriggerAboutGraphiteLocalizedCommitDate: {
 commitDate: string
 }, TriggerFileDownload: {
 document: string,
@@ -738,30 +738,30 @@ documentId: number,
 layerPath: Array<number>,
 nodePath: Array<number>,
 hostname: string
-}, TriggerImport: null, TriggerIndexedDbRemoveDocument: {
+}, TriggerImport: void, TriggerIndexedDbRemoveDocument: {
 documentId: number
 }, TriggerIndexedDbWriteDocument: {
 document: string,
 details: FrontendDocumentDetails,
 version: string
-}, TriggerLoadAutoSaveDocuments: null, TriggerLoadPreferences: null, TriggerNodeGraphFrameGenerate: {
+}, TriggerLoadAutoSaveDocuments: void, TriggerLoadPreferences: void, TriggerNodeGraphFrameGenerate: {
 documentId: number,
 layerPath: Array<number>,
 svg: string,
 size: DVec2,
 imaginateNode: (undefined | Array<number>)
-}, TriggerOpenDocument: null, TriggerPaste: null, TriggerRasterDownload: {
+}, TriggerOpenDocument: void, TriggerPaste: void, TriggerRasterDownload: {
 svg: string,
 name: string,
 mime: string,
 size: (Array<number> & { length: 2 })
-}, TriggerRefreshBoundsOfViewports: null, TriggerRevokeBlobUrl: {
+}, TriggerRefreshBoundsOfViewports: void, TriggerRevokeBlobUrl: {
 url: string
 }, TriggerSavePreferences: {
 preferences: PreferencesMessageHandler
-}, TriggerTextCommit: null, TriggerTextCopy: {
+}, TriggerTextCommit: void, TriggerTextCopy: {
 copyText: string
-}, TriggerViewportResize: null, TriggerVisitLink: {
+}, TriggerViewportResize: void, TriggerVisitLink: {
 url: string
 }, UpdateActiveDocument: {
 documentId: number

@@ -1,3 +1,5 @@
+use std::collections::BTreeMap;
+
 use document_legacy::layers::layer_info::LayerDataTypeDiscriminant;
 use graph_craft::imaginate_input::{ImaginateMaskPaintMode, ImaginateMaskStartingFill};
 use graphite_editor::messages::{
@@ -40,11 +42,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 			serde_reflection::ContainerFormat::NewTypeStruct(inner) => format_type(inner),
 			serde_reflection::ContainerFormat::TupleStruct(inner) => format_tuple(inner),
 			serde_reflection::ContainerFormat::Struct(inner) => format_struct(inner),
-			serde_reflection::ContainerFormat::Enum(inner) => inner
-				.values()
-				.map(|pair| -> String { format!("{{ {}: {} }}", pair.name, format_variant_type(&pair.value)) })
-				.collect::<Vec<String>>()
-				.join(" |\n"),
+			serde_reflection::ContainerFormat::Enum(inner) => format_enum(inner),
 		};
 		println!("export type {type_name} =\n{ts_typedef};\n");
 	}
@@ -72,6 +70,20 @@ fn format_struct(inner: &[Named<Format>]) -> String {
 		"{{\n{}\n}}",
 		(inner.iter().map(|pair| format!("{}: {}", pair.name, format_type(&pair.value))).collect::<Vec<String>>().join(",\n"))
 	)
+}
+
+fn format_enum(inner: &BTreeMap<u32, Named<VariantFormat>>) -> String {
+	inner
+		.values()
+		.map(|pair| -> String {
+			if let VariantFormat::Unit = pair.value {
+				format!(r#""{}""#, pair.name)
+			} else {
+				format!("{{ {}: {} }}", pair.name, format_variant_type(&pair.value))
+			}
+		})
+		.collect::<Vec<String>>()
+		.join(" |\n")
 }
 
 fn format_type(inner: &Format) -> String {
@@ -106,7 +118,7 @@ fn format_type(inner: &Format) -> String {
 fn format_variant_type(format: &VariantFormat) -> String {
 	match format {
 		VariantFormat::Variable(_) => "any".into(),
-		VariantFormat::Unit => "null".into(),
+		VariantFormat::Unit => "void".into(), // only for reference. enum variant like this is formatted as string
 		VariantFormat::NewType(inner) => format_type(inner),
 		VariantFormat::Tuple(inner) => format_tuple(inner),
 		VariantFormat::Struct(inner) => format_struct(inner),
