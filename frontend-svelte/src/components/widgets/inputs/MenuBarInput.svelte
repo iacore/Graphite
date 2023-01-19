@@ -35,13 +35,19 @@
 		// Focus the target so that keyboard inputs are sent to the dropdown
 		(e.target as HTMLElement | undefined)?.focus();
 
-		if (menuListEntry.ref) menuListEntry.ref.isOpen = true;
+		if (menuListEntry.ref) {
+			menuListEntry.ref.isOpen = true;
+			entries = entries;
+		}
 		else throw new Error("The menu bar floating menu has no associated ref");
 	}
 
 	function unFocusEntry(menuListEntry: MenuListEntry, e: FocusEvent) {
 		const blurTarget = (e.target as HTMLElement | undefined)?.closest("[data-menu-bar-input]");
-		if (blurTarget !== self && menuListEntry.ref) menuListEntry.ref.isOpen = false;
+		if (menuListEntry.ref) {
+			// menuListEntry.ref.isOpen = false;
+		}
+		entries = entries;
 	}
 
 	onMount(() => {
@@ -76,7 +82,7 @@
 </script>
 
 <div class="menu-bar-input" bind:this={self} data-menu-bar-input>
-	{#each entries as entry, index (index)}
+	{#each entries as entry, index}
 		<div class="entry-container">
 			<div
 				on:click={(e) => clickEntry(entry, e)}
@@ -95,7 +101,7 @@
 				{/if}
 			</div>
 			{#if entry.children && entry.children.length > 0}
-				<MenuList open={entry.ref?.menuIsOpen() || false} entries={entry.children || []} direction="Bottom" minWidth={240} drawIcon={true} bind:this={entry.ref} />
+				<MenuList on:open={(e) => entry.ref.isOpen=e.detail} open={entry.ref?.isOpen || false} entries={entry.children || []} direction="Bottom" minWidth={240} drawIcon={true} bind:this={entry.ref} />
 			{/if}
 		</div>
 	{/each}
