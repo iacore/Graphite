@@ -42,14 +42,6 @@
 		else throw new Error("The menu bar floating menu has no associated ref");
 	}
 
-	function unFocusEntry(menuListEntry: MenuListEntry, e: FocusEvent) {
-		const blurTarget = (e.target as HTMLElement | undefined)?.closest("[data-menu-bar-input]");
-		if (menuListEntry.ref) {
-			// menuListEntry.ref.isOpen = false;
-		}
-		entries = entries;
-	}
-
 	onMount(() => {
 		editor.subscriptions.subscribeJsMessage(UpdateMenuBarLayout, (updateMenuBarLayout) => {
 			const arraysEqual = (a: KeyRaw[], b: KeyRaw[]): boolean => a.length === b.length && a.every((aValue, i) => aValue === b[i]);
@@ -86,7 +78,6 @@
 		<div class="entry-container">
 			<div
 				on:click={(e) => clickEntry(entry, e)}
-				on:blur={(e) => unFocusEntry(entry, e)}
 				on:keydown={(e) => entry.ref?.keydown(e, false)}
 				class="entry"
 				class:open={entry.ref?.isOpen}
