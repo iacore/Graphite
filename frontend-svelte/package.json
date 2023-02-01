@@ -29,6 +29,7 @@
 		"eslint-plugin-import": "^2.26.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"prettier": "^2.8.2",
+		"rollup": "^3",
 		"rollup-plugin-license": "^3.0.1",
 		"sass": "^1.57.1",
 		"svelte": "^3.55.0",

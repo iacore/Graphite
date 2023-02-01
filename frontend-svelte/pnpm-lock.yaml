@@ -11,10 +11,11 @@ specifiers:
   eslint-config-prettier: ^8.6.0
   eslint-plugin-import: ^2.26.0
   eslint-plugin-svelte3: ^4.0.0
-  graphite-wasm-svelte: link:wasm/pkg
+  graphite-wasm-svelte: file:wasm/pkg
   idb-keyval: ^6.2.0
   prettier: ^2.8.2
   reflect-metadata: ^0.1.13
+  rollup: ^3
   rollup-plugin-license: ^3.0.1
   sass: ^1.57.1
   svelte: ^3.55.0
@@ -29,7 +30,7 @@ specifiers:
 dependencies:
   '@tauri-apps/api': 1.2.0
   class-transformer: 0.5.1
-  graphite-wasm-svelte: link:wasm/pkg
+  graphite-wasm-svelte: file:wasm/pkg
   idb-keyval: 6.2.0
   reflect-metadata: 0.1.13
 
@@ -43,7 +44,8 @@ devDependencies:
   eslint-plugin-import: 2.27.5_2l6piu6guil2f63lj3qmhzbnn4
   eslint-plugin-svelte3: 4.0.0_tmo5zkisvhu6htudosk5k7m6pu
   prettier: 2.8.3
-  rollup-plugin-license: 3.0.1
+  rollup: 3.10.0
+  rollup-plugin-license: 3.0.1_rollup@3.10.0
   sass: 1.57.1
   svelte: 3.55.1
   svelte-check: 3.0.2_sass@1.57.1+svelte@3.55.1
@@ -2155,7 +2157,7 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-plugin-license/3.0.1:
+  /rollup-plugin-license/3.0.1_rollup@3.10.0:
     resolution: {integrity: sha512-/lec6Y94Y3wMfTDeYTO/jSXII0GQ/XkDZCiqkMKxyU5D5nGPaxr/2JNYvAgYsoCYuOLGOanKDPjCCQiTT96p7A==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2168,6 +2170,7 @@ packages:
       mkdirp: 1.0.4
       moment: 2.29.4
       package-name-regex: 2.0.6
+      rollup: 3.10.0
       spdx-expression-validate: 2.0.0
       spdx-satisfies: 5.0.1
     dev: true
@@ -2700,3 +2703,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  file:wasm/pkg:
+    resolution: {directory: wasm/pkg, type: directory}
+    name: graphite-wasm-svelte
+    version: 0.0.0
+    dev: false
