@@ -180,9 +180,9 @@ pub struct CopyToPoints<Points, Instance> {
 }
 
 #[node_macro::node_fn(CopyToPoints)]
-async fn copy_to_points<I: GraphicElementRendered + Default + ConcatElement + TransformMut, FP: Future<Output = VectorData>, FI: Future<Output = I>>(
+async fn copy_to_points<I: GraphicElementRendered + Default + ConcatElement + TransformMut, FV: Future<Output = VectorData>, FI: Future<Output = I>>(
 	footprint: Footprint,
-	points: impl Node<Footprint, Output = FP>,
+	points: impl Node<Footprint, Output = FV>,
 	instance: impl Node<Footprint, Output = FI>,
 ) -> I {
 	let points = self.points.eval(footprint).await;
@@ -304,13 +304,13 @@ fn splines_from_points(mut vector_data: VectorData) -> VectorData {
 }
 
 #[derive(Debug, Clone, Copy)]
-pub struct BooleanUnion<Points> {
-	lhs: Points,
-	rhs: Points,
+pub struct BooleanUnion<Shape> {
+	lhs: Shape,
+	rhs: Shape,
 }
 
 #[node_macro::node_fn(BooleanUnion)]
-async fn boolean_union<FP: Future<Output = VectorData>>(footprint: Footprint, lhs: impl Node<Footprint, Output = FP>, rhs: impl Node<Footprint, Output = FP>) -> VectorData {
+async fn boolean_union<FV: Future<Output = VectorData>>(footprint: Footprint, lhs: impl Node<Footprint, Output = FV>, rhs: impl Node<Footprint, Output = FV>) -> VectorData {
 	let lhs = self.lhs.eval(footprint).await;
 	let rhs = self.rhs.eval(footprint).await;
 	let mut res = VectorData {
